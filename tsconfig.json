@@ -1,4 +1,6 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  "include": ["./auto-imports.d.ts", "nuxt.config.ts", "components/**/*", "composables/**/*"],
+  "exclude": ["node_modules"]
 }
