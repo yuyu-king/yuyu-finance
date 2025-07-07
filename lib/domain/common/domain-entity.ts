@@ -1,14 +1,14 @@
 export abstract class DomainEntity {
-    public readonly createTime: string;
+    public readonly createTime: Date;
     public readonly createdBy: string;
-    public lastUpdateTime: string;
+    public lastUpdateTime: Date;
     public lastUpdatedBy: string;
     public deleteFlag: 0 | 1;
 
     protected constructor(params: {
-        createTime: string;
+        createTime: Date;
         createdBy: string;
-        lastUpdateTime: string;
+        lastUpdateTime: Date;
         lastUpdatedBy: string;
         deleteFlag: 0 | 1;
     }) {

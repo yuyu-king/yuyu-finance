@@ -4,39 +4,39 @@ import {TransactionType} from "@/lib/domain/transaction/enum/transaction-type.en
 
 export class StandardTransaction extends DomainEntity {
     // 主键
-    public readonly id: string;
+    readonly id: string;
 
     // 业务主键（来源ID + 来源类型）
-    public readonly busId: string;
+    readonly busId: string;
 
     // 来源系统
-    public readonly sourceSystem: SourceSystem;
+    readonly sourceSystem: SourceSystem;
 
     // 来源记录ID（如支付宝交易号、微信订单号等）
-    public readonly sourceRecordId: string;
+    readonly sourceRecordId: string;
 
     // 来源账户
-    private sourceAccount: string;
+    sourceAccount: string;
 
     // 目标账户（如转账到的账户）
-    private targetAccount: string;
+    targetAccount: string;
 
     // 交易类型
-    private type: TransactionType;
+    type: TransactionType;
 
     // 交易金额
-    private amount: number;
+    amount: number;
 
     // 交易分类
-    private category: string;
+    category: string;
 
     // 交易时间
-    private transactionTime: string;
+    transactionTime: string;
 
     // 备注信息
-    private note?: string;
+    note?: string;
 
-    constructor({
+    constructor(init:{
         id: string;
         busId: string;
         sourceSystem: SourceSystem;
@@ -54,7 +54,14 @@ export class StandardTransaction extends DomainEntity {
         lastUpdatedBy: string,
         deleteFlag: 0 | 1;
     }) {
-        super({createTime, createdBy, lastUpdateTime, lastUpdatedBy, deleteFlag});
+        super({
+            createTime: init.createTime,
+            createdBy: init.createdBy,
+            lastUpdateTime: init.lastUpdateTime,
+            lastUpdatedBy: init.lastUpdatedBy,
+            deleteFlag: init.deleteFlag,
+        });
+
         this.id = init.id;
         this.busId = init.busId;
         this.sourceSystem = init.sourceSystem;
@@ -74,27 +81,5 @@ export class StandardTransaction extends DomainEntity {
     private validate() {
         if (this.amount <= 0) throw new Error('交易金额必须为正数');
         if (!this.category) throw new Error('必须指定分类');
-    }
-
-    // 获取方法（按需暴露）
-    public getAmount(): number {
-        return this.amount;
-    }
-
-    public getType(): TransactionType {
-        return this.type;
-    }
-
-    public getTransactionTime(): string {
-        return this.transactionTime;
-    }
-
-    public getNote(): string | undefined {
-        return this.note;
-    }
-
-    // 修改方法（示例）
-    public updateNote(note: string): void {
-        this.note = note;
     }
 }
