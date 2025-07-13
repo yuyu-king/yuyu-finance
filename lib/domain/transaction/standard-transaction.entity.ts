@@ -1,6 +1,7 @@
 import {DomainEntity} from "@/lib/domain/common/domain-entity";
 import {SourceSystem} from "@/lib/domain/transaction/enum/source-system.enum";
 import {TransactionType} from "@/lib/domain/transaction/enum/transaction-type.enum";
+import { TransactionCategory } from "@/lib/domain/transaction/enum/transaction-category.enum";
 
 export class StandardTransaction extends DomainEntity {
     // 主键
@@ -28,7 +29,7 @@ export class StandardTransaction extends DomainEntity {
     amount: number;
 
     // 交易分类
-    category: string;
+    category: TransactionCategory;
 
     // 交易时间
     transactionTime: string;
@@ -45,7 +46,7 @@ export class StandardTransaction extends DomainEntity {
         targetAccount: string;
         type: TransactionType;
         amount: number;
-        category: string;
+        category: TransactionCategory;
         transactionTime: string;
         note?: string;
         createTime: Date,
