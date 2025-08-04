@@ -7,11 +7,11 @@ import {
     TrendingUp,
     CreditCard,
 } from "lucide-react";
-import { TransactionCategory } from "./transaction-category.enum";
+import { TransactionCategory } from "@/lib/domain/transaction/enum/transaction-category.enum";
 
 export interface CategoryMeta {
     label: string;
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<never>;
     color: string;
 }
 
